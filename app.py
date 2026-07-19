@@ -3,7 +3,8 @@ from final_project.emotion_detection import emotion_detector
 
 app = Flask(__name__)
 
-@app.route("/")
+
+
 
 
 
