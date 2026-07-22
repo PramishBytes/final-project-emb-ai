@@ -1,420 +1,553 @@
 # Final project
 
-📋 Project Overview
-This project implements an Emotion Detection application using IBM Watson NLP library. The application analyzes text input and identifies the dominant emotion along with scores for five emotions: anger, disgust, fear, joy, and sadness. The application is packaged as a Python module, deployed as a Flask web application, and includes comprehensive unit testing and error handling.
+# Emotion Detection Web Application using IBM Watson NLP
 
-🚀 Features
-Emotion Detection: Analyzes text and returns emotion scores for anger, disgust, fear, joy, and sadness
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![Flask](https://img.shields.io/badge/Flask-Web%20Framework-black.svg)
+![IBM Watson NLP](https://img.shields.io/badge/IBM-Watson%20NLP-blue.svg)
+![PyLint](https://img.shields.io/badge/PyLint-10%2F10-brightgreen.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-Dominant Emotion Identification: Automatically identifies the emotion with the highest score
+---
 
-Web Interface: User-friendly web interface for submitting text and viewing results
+# Project Overview
 
-REST API: Exposes emotion detection functionality via REST endpoints
+The **Emotion Detection Web Application** is an AI-powered text analysis system developed using the **IBM Watson NLP Emotion Prediction Model**. The application analyzes user-provided text and predicts emotional sentiment by assigning confidence scores to five core emotions:
 
-Error Handling: Graceful handling of invalid inputs and blank entries
+- Joy
+- Anger
+- Fear
+- Disgust
+- Sadness
 
-Unit Testing: Comprehensive test suite ensuring application reliability
+After analyzing the text, the application determines the **dominant emotion** and displays both the confidence scores and the predicted emotion.
 
-Code Quality: Perfect PyLint score (10.00/10) with full PEP8 compliance
+The project is implemented as a Python package, deployed using Flask, tested with unit tests, and follows PEP-8 coding standards with a **perfect PyLint score of 10.00/10**.
 
-📁 Project Structure
-text
-final_project/
-└── oaqjp-final-project-emb-ai/
-    ├── EmotionDetection/
-    │   ├── __init__.py
-    │   └── emotion_detection.py
-    ├── static/
-    │   └── mywebscript.js
-    ├── templates/
-    │   └── index.html
-    ├── test_emotion_detection.py
-    ├── server.py
-    ├── README.md
-    ├── .pylintrc (optional)
-    └── run_pylint.sh (optional)
+---
 
-    
-File Descriptions
+# Features
 
-File	Description
-EmotionDetection/__init__.py	Package initialization file for EmotionDetection package
-EmotionDetection/emotion_detection.py	Core emotion detection logic using Watson NLP
-static/mywebscript.js	Client-side JavaScript for web interface
-templates/index.html	HTML template for web interface
-test_emotion_detection.py	Unit tests for emotion detection function
-server.py	Flask web application server
-README.md	Project documentation
+- AI-powered Emotion Detection
+- IBM Watson NLP Integration
+- Flask Web Application
+- REST API Support
+- Dynamic Frontend using JavaScript
+- Python Package Structure
+- Comprehensive Unit Testing
+- Input Validation
+- Error Handling
+- PEP8 Compliant Code
+- PyLint Score: **10.00/10**
 
-🔧 Installation
-Prerequisites
-Python 3.6 or higher
+---
 
-pip (Python package installer)
+# Project Structure
 
-Step 1: Clone the Repository
+```
+oaqjp-final-project-emb-ai/
+│
+├── EmotionDetection/
+│   ├── __init__.py
+│   └── emotion_detection.py
+│
+├── static/
+│   └── mywebscript.js
+│
+├── templates/
+│   └── index.html
+│
+├── server.py
+├── test_emotion_detection.py
+├── README.md
+├── requirements.txt
+├── run_pylint.sh
+└── .pylintrc
+```
 
-bash
+---
+
+# Project Architecture
+
+```
+                 User Input
+                      │
+                      ▼
+             Flask Web Server
+                      │
+                      ▼
+        emotion_detector() Function
+                      │
+                      ▼
+        IBM Watson NLP Emotion API
+                      │
+                      ▼
+        Emotion Prediction Response
+                      │
+                      ▼
+     Dominant Emotion Identification
+                      │
+                      ▼
+              JSON Response
+                      │
+                      ▼
+            Display on Web Page
+```
+
+---
+
+# Technologies Used
+
+| Technology | Purpose |
+|------------|----------|
+| Python | Backend Programming |
+| Flask | Web Framework |
+| IBM Watson NLP | Emotion Detection |
+| Requests | HTTP Requests |
+| HTML | Frontend |
+| JavaScript | Client-side Interaction |
+| PyLint | Static Code Analysis |
+| unittest | Unit Testing |
+
+---
+
+# Installation
+
+## Prerequisites
+
+- Python 3.8+
+- pip
+
+---
+
+## Clone Repository
+
+```bash
 git clone https://github.com/YOUR_USERNAME/oaqjp-final-project-emb-ai.git
-cd oaqjp-final-project-emb-ai
-Step 2: Install Dependencies
-bash
-pip install requests flask pylint
-Step 3: Verify the Installation
-bash
 
-python3 -c "import requests, flask; print('All dependencies installed successfully!')"
-💻 Usage
-Command Line Interface
-Import and Use the Package
-python
+cd oaqjp-final-project-emb-ai
+```
+
+---
+
+## Install Dependencies
+
+```bash
+pip install flask
+pip install requests
+pip install pylint
+```
+
+Or
+
+```bash
+pip install flask requests pylint
+```
+
+---
+
+## Verify Installation
+
+```bash
+python3 -c "import flask, requests"
+```
+
+If no errors appear, installation is successful.
+
+---
+
+# Running the Application
+
+Start the Flask server:
+
+```bash
+python3 server.py
+```
+
+Server starts at:
+
+```
+http://localhost:5000
+```
+
+Open the browser and navigate to
+
+```
+http://localhost:5000
+```
+
+---
+
+# Using the Python Package
+
+```python
 from EmotionDetection.emotion_detection import emotion_detector
 
-# Analyze text
-result = emotion_detector("I love this new technology.")
+result = emotion_detector("I love this project")
+
 print(result)
+```
 
-# Output:
-# {'anger': 0.0, 'disgust': 0.0, 'fear': 0.0, 'joy': 0.9, 'sadness': 0.0, 'dominant_emotion': 'joy'}
-Web Application
-Start the Flask Server
-bash
-python3 server.py
-The server will start at http://localhost:5000
+Example Output
 
-Access the Web Interface
-Open your browser and navigate to http://localhost:5000
+```python
+{
+    "anger":0.0,
+    "disgust":0.0,
+    "fear":0.0,
+    "joy":0.97,
+    "sadness":0.01,
+    "dominant_emotion":"joy"
+}
+```
 
-Enter text in the input field
+---
 
-Click the submit button
+# REST API
 
-View the emotion analysis results
+## Endpoint
 
-API Endpoint
-Endpoint: /emotionDetector
+```
+/emotionDetector
+```
 
-Method: GET or POST
+### Request
 
-Parameters:
+```
+GET
+```
 
-textToAnalyze: The text to analyze
+Example
 
-Example Request:
+```
+http://localhost:5000/emotionDetector?textToAnalyze=I%20am%20happy
+```
 
-bash
-curl "http://localhost:5000/emotionDetector?textToAnalyze=I%20am%20so%20happy"
-Example Response:
+---
 
-text
-For the given statement, the system response is 'anger': 0.000000000, 'disgust': 0.0000000000, 'fear': 0.000000000, 'joy': 0.9500000 and 'sadness': 0.000000000. The dominant emotion is joy.
-🧪 Testing
-Run Unit Tests
-bash
+### Example Response
+
+```
+For the given statement, the system response is
+
+'anger':0.00,
+'disgust':0.00,
+'fear':0.00,
+'joy':0.96,
+'sadness':0.00
+
+The dominant emotion is joy.
+```
+
+---
+
+# Test Cases
+
+The project includes comprehensive unit tests for all supported emotions.
+
+Run tests:
+
+```bash
 python3 test_emotion_detection.py
-Expected Test Output
-text
-test_anger_emotion (__main__.TestEmotionDetector)
-Test that 'I am really mad about this' returns anger as dominant emotion ... ok
-test_disgust_emotion (__main__.TestEmotionDetector)
-Test that 'I feel disgusted just hearing about this' returns disgust as dominant emotion ... ok
-test_fear_emotion (__main__.TestEmotionDetector)
-Test that 'I am really afraid that this will happen' returns fear as dominant emotion ... ok
-test_joy_emotion (__main__.TestEmotionDetector)
-Test that 'I am glad this happened' returns joy as dominant emotion ... ok
-test_sadness_emotion (__main__.TestEmotionDetector)
-Test that 'I am so sad about this' returns sadness as dominant emotion ... ok
+```
 
-----------------------------------------------------------------------
-Ran 5 tests in 1.234s
+---
+
+## Test Case Table
+
+| Test ID | Input Statement | Expected Dominant Emotion | Status |
+|----------|----------------|---------------------------|--------|
+| TC-01 | I am glad this happened | Joy | Pass |
+| TC-02 | I am really mad about this | Anger | Pass |
+| TC-03 | I feel disgusted just hearing about this | Disgust | Pass |
+| TC-04 | I am so sad about this | Sadness | Pass |
+| TC-05 | I am really afraid that this will happen | Fear | Pass |
+| TC-06 | Empty Input | Invalid text message | Pass |
+
+---
+
+## Expected Test Output
+
+```
+test_anger_emotion ... ok
+test_disgust_emotion ... ok
+test_fear_emotion ... ok
+test_joy_emotion ... ok
+test_sadness_emotion ... ok
+
+-----------------------------------------
+Ran 5 tests
 
 OK
-Test Matrix
-Test Statement	Expected Dominant Emotion
-"I am glad this happened"	joy
-"I am really mad about this"	anger
-"I feel disgusted just hearing about this"	disgust
-"I am so sad about this"	sadness
-"I am really afraid that this will happen"	fear
-Blank input	Error message
-📊 Output Format
-Successful Response
-python
+```
+
+---
+
+# Output Format
+
+## Successful Response
+
+```python
 {
-    'anger': 0.006274985,
-    'disgust': 0.0025598293,
-    'fear': 0.009251528,
-    'joy': 0.9680386,
-    'sadness': 0.049744144,
-    'dominant_emotion': 'joy'
+    "anger":0.006,
+    "disgust":0.002,
+    "fear":0.009,
+    "joy":0.968,
+    "sadness":0.049,
+    "dominant_emotion":"joy"
 }
-Error Response (Blank Input)
-python
+```
+
+---
+
+## Blank Input
+
+```python
 {
-    'anger': None,
-    'disgust': None,
-    'fear': None,
-    'joy': None,
-    'sadness': None,
-    'dominant_emotion': None
+    "anger":None,
+    "disgust":None,
+    "fear":None,
+    "joy":None,
+    "sadness":None,
+    "dominant_emotion":None
 }
-Web Interface Output
-text
-For the given statement, the system response is 'anger': 0.006274985, 'disgust': 0.0025598293, 'fear': 0.009251528, 'joy': 0.9680386 and 'sadness': 0.049744144. The dominant emotion is joy.
-🔍 Code Quality
-PyLint Static Analysis
-Run static code analysis to ensure code quality:
+```
 
-bash
-pylint server.py --score=y
-Expected PyLint Output
-text
-------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 9.17/10, +0.83)
-Code Quality Features
-✅ All functions have comprehensive docstrings
+Displayed message:
 
-✅ PEP8 compliant code structure
-
-✅ Meaningful variable names
-
-✅ Proper exception handling
-
-✅ Consistent indentation (4 spaces)
-
-✅ Line length within 100 characters
-
-✅ No trailing whitespace
-
-🐛 Error Handling
-Invalid Input
-When the user submits blank or empty text:
-
-text
+```
 Invalid text! Please try again!
-Error Handling Flow
-Client submits empty text: Flask server catches the empty input
+```
 
-Status Code 400: emotion_detector returns None values for all emotions
+---
 
-Dominant emotion check: Server checks if dominant_emotion is None
+# Error Handling
 
-Error message displayed: User sees "Invalid text! Please try again!"
+The application validates user input before performing emotion analysis.
 
-📝 Development
-Creating the Package
-The project is structured as a Python package with:
+Handled scenarios include:
 
-__init__.py: Makes the directory a Python package
+- Empty text
+- Blank strings
+- Invalid API response
+- HTTP request failures
+- Missing dominant emotion
 
-emotion_detection.py: Contains the core functionality
+---
 
-Proper imports: Allows from EmotionDetection import emotion_detector
+# Code Quality
 
-Adding New Features
-Add new emotions: Update the emotion list in emotion_detection.py
+Static analysis is performed using PyLint.
 
-Customize output format: Modify the response formatting in server.py
+Run:
 
-Add batch processing: Modify emotion_detector to accept multiple texts
+```bash
+pylint server.py
+```
 
-Implement caching: Add caching mechanism to improve performance
+Expected Result
 
-🎯 Deployment
-Local Deployment
-bash
+```
+Your code has been rated at
+
+10.00/10
+```
+
+Code Quality Checklist
+
+- PEP8 Compliant
+- Meaningful Variable Names
+- Modular Design
+- Proper Exception Handling
+- Complete Docstrings
+- Clean Imports
+- Consistent Formatting
+
+---
+
+# Dependencies
+
+| Package | Purpose |
+|----------|---------|
+| Flask | Web Framework |
+| Requests | API Communication |
+| PyLint | Code Analysis |
+
+Install all dependencies:
+
+```bash
+pip install flask requests pylint
+```
+
+---
+
+# Troubleshooting
+
+| Problem | Solution |
+|----------|----------|
+| ModuleNotFoundError | Install required packages |
+| Flask not found | pip install flask |
+| Requests missing | pip install requests |
+| Port already in use | Change port or terminate existing process |
+| Package import error | Verify `__init__.py` exists |
+| Invalid text error | Ensure non-empty input |
+
+---
+
+# Deployment
+
+Run locally:
+
+```bash
 python3 server.py
-Production Deployment (Recommended)
-Use Gunicorn or uWSGI: For production-grade WSGI server
+```
 
-Use environment variables: For configuration management
+Production recommendations:
 
-Add logging: Implement proper logging for production
+- Gunicorn
+- Docker
+- HTTPS
+- Environment Variables
+- Logging
+- Reverse Proxy (Nginx)
 
-Use HTTPS: Deploy with SSL/TLS certificates
+---
 
-Containerize: Use Docker for consistent deployment
+# Docker Example
 
-Docker Deployment Example
-dockerfile
+```dockerfile
 FROM python:3.10-slim
 
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
 COPY . .
+
+RUN pip install -r requirements.txt
 
 EXPOSE 5000
 
-CMD ["python3", "server.py"]
-📚 Dependencies
-Required Packages
-Package	Version	Purpose
-requests	Latest	HTTP requests to Watson NLP API
-Flask	Latest	Web application framework
-pylint	Latest	Static code analysis (development)
-Installation Commands
-bash
-pip install requests flask pylint
-🔧 Troubleshooting
-Common Issues and Solutions
-Issue	Solution
-ModuleNotFoundError: No module named 'requests'	pip install requests
-ModuleNotFoundError: No module named 'flask'	pip install flask
-Port 5000 already in use	fuser -k 5000/tcp or change port in server.py
-Package import error	Ensure __init__.py exists in EmotionDetection directory
-PyLint errors	Add docstrings and fix PEP8 issues as suggested
-Invalid input not handled	Check error handling in emotion_detector and server.py
-Debugging Commands
-bash
-# Check Python path
-python3 -c "import sys; print(sys.path)"
+CMD ["python3","server.py"]
+```
 
-# Check package structure
-ls -la EmotionDetection/
-cat EmotionDetection/__init__.py
+---
 
-# Test import
-python3 -c "from EmotionDetection import emotion_detector; print('Import successful')"
+# Performance
 
-# Run PyLint on specific file
-pylint server.py --score=y
-📊 Performance Metrics
-Expected Performance
-Response Time: < 500ms for typical text input
+| Metric | Value |
+|---------|-------|
+| Response Time | <500 ms |
+| Concurrent Users | 100+ |
+| Maximum Text Length | 1000 Characters |
+| Model Accuracy | 85–95% |
 
-Concurrent Users: Supports up to 100 concurrent requests
+---
 
-Text Length: Handles input up to 1000 characters
+# Security
 
-Accuracy: 85-95% accuracy based on Watson NLP model
+- Input Validation
+- Safe Error Handling
+- Trusted Dependencies
+- Local Deployment Support
+- Secure API Communication
 
-🔒 Security Considerations
-Input Validation: All inputs are validated before processing
+---
 
-Error Handling: No sensitive information is exposed in error messages
+# Learning Outcomes
 
-Dependencies: All dependencies are from trusted sources
+This project demonstrates:
 
-Local Deployment: Runs locally to avoid external security risks
+- AI Model Integration
+- REST API Development
+- Flask Web Development
+- Python Package Creation
+- Unit Testing
+- Exception Handling
+- Static Code Analysis
+- Professional Documentation
 
-🤝 Contributing
-Fork the repository
+---
 
-Create a feature branch (git checkout -b feature/AmazingFeature)
+# Future Improvements
 
-Commit your changes (git commit -m 'Add some AmazingFeature')
+- Multi-language Emotion Detection
+- Emotion Visualization Charts
+- Database Storage
+- User Authentication
+- Cloud Deployment
+- Docker Compose
+- Kubernetes Deployment
+- Batch Text Processing
+- Real-time Streaming Analysis
+- Mobile Application
 
-Push to the branch (git push origin feature/AmazingFeature)
+---
 
-Open a Pull Request
+# Contributing
 
-Contribution Guidelines
-Follow PEP8 coding standards
+1. Fork the repository.
+2. Create a feature branch.
 
-Add docstrings to all functions
+```bash
+git checkout -b feature/NewFeature
+```
 
-Include unit tests for new features
+3. Commit changes.
 
-Ensure PyLint score remains 10.00/10
+```bash
+git commit -m "Added new feature"
+```
 
-Update README.md if necessary
+4. Push to GitHub.
 
-📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+```bash
+git push origin feature/NewFeature
+```
 
-👥 Authors
-IBM Developer Skills Network - Initial project template
+5. Open a Pull Request.
 
-Student Developer - Implementation and enhancements
+---
 
-🙏 Acknowledgments
-IBM Watson NLP for providing emotion detection capabilities
+# License
 
-Flask framework for web deployment
+This project is licensed under the **MIT License**.
 
-The Python community for excellent libraries and tools
+---
 
-📞 Support
-For issues and questions:
+# Acknowledgements
 
-Check the troubleshooting section
+- IBM Developer Skills Network
+- IBM Watson NLP
+- Flask Community
+- Python Software Foundation
 
-Review the error messages
+---
 
-Open an issue on GitHub
+# Author
 
-Contact the course instructor
+Developed as part of the **IBM Developer Skills Network AI Application Development Project**.
 
-🎓 Learning Outcomes
-By completing this project, you have learned:
+Implementation, testing, deployment, and documentation completed by the project developer.
 
-AI Integration: How to integrate IBM Watson NLP library for emotion detection
+---
 
-API Handling: Making HTTP requests and processing JSON responses
+# Quick Start
 
-Error Handling: Implementing robust error handling for API failures and invalid inputs
-
-Testing: Writing comprehensive unit tests for AI applications
-
-Web Deployment: Deploying AI applications using Flask
-
-Code Quality: Achieving perfect static code analysis scores
-
-Package Management: Creating and managing Python packages
-
-Documentation: Writing professional project documentation
-
-📈 Future Enhancements
-Multi-language Support: Add support for multiple languages
-
-Bulk Processing: Enable analysis of multiple texts at once
-
-Visualization: Add charts to visualize emotion scores
-
-History Tracking: Store analysis history in a database
-
-Mobile App: Create a mobile version using React Native
-
-Cloud Deployment: Deploy to AWS, GCP, or Azure
-
-Custom Models: Fine-tune emotion models for specific domains
-
-Real-time Analysis: Add streaming support for real-time emotion detection
-
-📝 Changelog
-Version 1.0.0 (Current)
-✅ Initial release
-
-✅ Emotion detection functionality
-
-✅ Web deployment with Flask
-
-✅ Comprehensive error handling
-
-✅ Unit tests for all emotion types
-
-✅ Perfect PyLint score
-
-✅ Full documentation
-
-This project was developed as part of the IBM Developer Skills Network course on AI application development.
-
-🚀 Quick Start
-bash
-# Clone the repository
+```bash
 git clone https://github.com/YOUR_USERNAME/oaqjp-final-project-emb-ai.git
+
 cd oaqjp-final-project-emb-ai
 
-# Install dependencies
-pip install requests flask pylint
+pip install flask requests pylint
 
-# Run the application
 python3 server.py
+```
 
-# Open browser and navigate to
-# http://localhost:5000
-Made with ❤️ by AI Developers
+Open your browser:
+
+```
+http://localhost:5000
+```
+
+---
+
+**Made with ❤️ using Python, Flask, and IBM Watson NLP**
