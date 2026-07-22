@@ -28,6 +28,9 @@ def emotion_detector(text_to_analyze):
         response = requests.post(url, json=input_json, headers=headers)
         
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f01e2ba (Added error handling for blank input and invalid text)
         # Check if the status code is 400 (Bad Request - empty or invalid input)
         if response.status_code == 400:
             # Return dictionary with all values as None for invalid input
@@ -40,8 +43,11 @@ def emotion_detector(text_to_analyze):
                 'dominant_emotion': None
             }
         
+<<<<<<< HEAD
 =======
 >>>>>>> d26be9e (Added EmotionDetection package with __init__.py)
+=======
+>>>>>>> f01e2ba (Added error handling for blank input and invalid text)
         # Convert the response text to a dictionary
         response_dict = json.loads(response.text)
         
@@ -95,11 +101,15 @@ def emotion_detector(text_to_analyze):
         # Handle any request errors
         return {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f01e2ba (Added error handling for blank input and invalid text)
             'anger': None,
             'disgust': None,
             'fear': None,
             'joy': None,
             'sadness': None,
+<<<<<<< HEAD
 =======
             'anger': 0.0,
             'disgust': 0.0,
@@ -107,6 +117,8 @@ def emotion_detector(text_to_analyze):
             'joy': 0.0,
             'sadness': 0.0,
 >>>>>>> d26be9e (Added EmotionDetection package with __init__.py)
+=======
+>>>>>>> f01e2ba (Added error handling for blank input and invalid text)
             'dominant_emotion': None,
             'error': str(e)
         }
@@ -114,11 +126,15 @@ def emotion_detector(text_to_analyze):
         # Handle JSON parsing errors
         return {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f01e2ba (Added error handling for blank input and invalid text)
             'anger': None,
             'disgust': None,
             'fear': None,
             'joy': None,
             'sadness': None,
+<<<<<<< HEAD
 =======
             'anger': 0.0,
             'disgust': 0.0,
@@ -126,6 +142,8 @@ def emotion_detector(text_to_analyze):
             'joy': 0.0,
             'sadness': 0.0,
 >>>>>>> d26be9e (Added EmotionDetection package with __init__.py)
+=======
+>>>>>>> f01e2ba (Added error handling for blank input and invalid text)
             'dominant_emotion': None,
             'error': f"JSON parsing error: {str(e)}"
         }
